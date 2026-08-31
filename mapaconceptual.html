@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Mapa Conceptual - Seguridad de la Información y Protección de Datos en Colombia
+    </title>
+
+    <style>
+        :root {
+            --bg: #eef2f7;
+            --surface: #ffffff;
+            --surface-soft: #f8fafc;
+
+            --primary: #173b76;
+            --primary-light: #eaf1fb;
+
+            --law1273: #c2410c;
+            --law1273-light: #fff4ec;
+
+            --law1581: #047857;
+            --law1581-light: #ecfdf5;
+
+            --forensic: #4338ca;
+            --forensic-light: #eef2ff;
+
+            --success: #15803d;
+            --success-light: #f0fdf4;
+
+            --text: #172033;
+            --muted: #64748b;
+            --border: #dbe3ee;
+
+            --shadow-sm: 0 3px 12px rgba(15, 23, 42, .06);
+            --shadow-md: 0 10px 30px rgba(15, 23, 42, .09);
+
+            --radius-lg: 20px;
+            --radius-md: 14px;
+            --radius-sm: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 35px 20px 50px;
+            font-family:
+                "Segoe UI",
+                Inter,
+                Roboto,
+                Arial,
+                sans-serif;
+
+            color: var(--text);
+            background:
+                radial-gradient(
+                    circle at top left,
+                    #ffffff 0,
+                    #f4f7fb 35%,
+                    var(--bg) 100%
+                );
+
+            line-height: 1.45;
+        }
+
+        .container {
+            width: min(1380px, 100%);
+            margin: 0 auto;
+        }
+
+        /* =========================================================
+           CABECERA
+        ========================================================= */
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #132f63 0%,
+                    #1d4f91 55%,
+                    #2563a9 100%
+                );
+
+            color: white;
+            border-radius: 24px;
+            padding: 38px 40px;
+            box-shadow: var(--shadow-md);
+
+            text-align: center;
+        }
+
+        .hero::before,
+        .hero::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,.07);
+        }
+
+        .hero::before {
+            width: 280px;
+            height: 280px;
+            top: -160px;
+            right: -70px;
+        }
+
+        .hero::after {
+            width: 220px;
+            height: 220px;
+            bottom: -150px;
+            left: -70px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-kicker {
+            display: inline-block;
+            padding: 7px 14px;
+            border: 1px solid rgba(255,255,255,.25);
+            border-radius: 999px;
+            background: rgba(255,255,255,.10);
+
+            font-size: .78rem;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+
+            margin-bottom: 14px;
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: clamp(1.7rem, 3vw, 2.65rem);
+            line-height: 1.15;
+            letter-spacing: -.03em;
+        }
+
+        .hero p {
+            margin: 14px auto 0;
+            max-width: 850px;
+            color: rgba(255,255,255,.88);
+            font-size: 1rem;
+        }
+
+        /* =========================================================
+           CONECTORES
+        ========================================================= */
+
+        .connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            margin: 24px 0 18px;
+
+            color: var(--muted);
+            font-size: .85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+        }
+
+        .connector::before,
+        .connector::after {
+            content: "";
+            width: 70px;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .connector-label {
+            padding: 7px 15px;
+            border-radius: 999px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .arrow-down {
+            width: 38px;
+            height: 38px;
+
+            margin: 0 auto 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+            background: white;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+
+            color: var(--primary);
+            font-size: 1.25rem;
+            font-weight: 900;
+        }
+
+        /* =========================================================
+           LEYES
+        ========================================================= */
+
+        .laws-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            position: relative;
+        }
+
+        .law-card {
+            position: relative;
+
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .law-card-header {
+            padding: 24px 25px 20px;
+            color: white;
+        }
+
+        .law-1273 .law-card-header {
+            background:
+                linear-gradient(
+                    135deg,
+                    #9a3412,
+                    #c2410c
+                );
+        }
+
+        .law-1581 .law-card-header {
+            background:
+                linear-gradient(
+                    135deg,
+                    #065f46,
+                    #047857
+                );
+        }
+
+        .law-number {
+            display: inline-flex;
+
+            padding: 5px 10px;
+            margin-bottom: 10px;
+
+            border-radius: 999px;
+            background: rgba(255,255,255,.14);
+
+            font-size: .75rem;
+            font-weight: 800;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+        }
+
+        .law-card-header h2 {
+            margin: 0;
+            font-size: 1.35rem;
+            line-height: 1.2;
+        }
+
+        .law-card-header p {
+            margin: 9px 0 0;
+            font-size: .9rem;
+            color: rgba(255,255,255,.88);
+        }
+
+        .law-content {
+            padding: 22px;
+        }
+
+        /* =========================================================
+           BLOQUES INTERNOS
+        ========================================================= */
+
+        .concept-block {
+            margin-bottom: 16px;
+            padding: 17px;
+
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            background: var(--surface-soft);
+        }
+
+        .concept-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .concept-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            margin-bottom: 13px;
+
+            font-size: .95rem;
+            font-weight: 800;
+        }
+
+        .icon {
+            width: 32px;
+            height: 32px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex: 0 0 32px;
+
+            border-radius: 9px;
+
+            font-size: .9rem;
+            font-weight: 900;
+        }
+
+        .law-1273 .icon {
+            background: var(--law1273-light);
+            color: var(--law1273);
+        }
+
+        .law-1581 .icon {
+            background: var(--law1581-light);
+            color: var(--law1581);
+        }
+
+        /* =========================================================
+           CONCEPTOS
+        ========================================================= */
+
+        .concept-list {
+            display: grid;
+            gap: 8px;
+        }
+
+        .concept-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+
+            font-size: .86rem;
+        }
+
+        .concept-item::before {
+            content: "•";
+            flex: 0 0 auto;
+
+            font-size: 1rem;
+            font-weight: 900;
+            margin-top: -1px;
+        }
+
+        .law-1273 .concept-item::before {
+            color: var(--law1273);
+        }
+
+        .law-1581 .concept-item::before {
+            color: var(--law1581);
+        }
+
+        .concept-item strong {
+            font-weight: 800;
+        }
+
+        /* =========================================================
+           ARTÍCULOS DE LA LEY 1273
+        ========================================================= */
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .article {
+            padding: 10px 11px;
+
+            background: white;
+            border: 1px solid #fed7aa;
+            border-radius: 9px;
+
+            font-size: .79rem;
+            line-height: 1.35;
+        }
+
+        .article strong {
+            color: var(--law1273);
+        }
+
+        /* =========================================================
+           PRINCIPIOS LEY 1581
+        ========================================================= */
+
+        .pill-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .pill {
+            padding: 7px 10px;
+
+            border-radius: 999px;
+
+            font-size: .76rem;
+            font-weight: 700;
+
+            background: white;
+            border: 1px solid #a7f3d0;
+            color: #065f46;
+        }
+
+        /* =========================================================
+           BLOQUE CENTRAL
+        ========================================================= */
+
+        .integration {
+            margin-top: 26px;
+            padding: 27px;
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffffff,
+                    #f8faff
+                );
+
+            border: 2px solid #c7d2fe;
+            box-shadow: var(--shadow-md);
+
+            text-align: center;
+        }
+
+        .integration-tag {
+            display: inline-block;
+
+            padding: 6px 12px;
+
+            border-radius: 999px;
+
+            color: var(--forensic);
+            background: var(--forensic-light);
+
+            font-size: .75rem;
+            font-weight: 800;
+            letter-spacing: .05em;
+            text-transform: uppercase;
+        }
+
+        .integration h2 {
+            margin: 10px 0 7px;
+
+            color: #312e81;
+
+            font-size: clamp(1.35rem, 2vw, 1.8rem);
+        }
+
+        .integration p {
+            margin: 0 auto;
+
+            max-width: 800px;
+
+            color: var(--muted);
+            font-size: .91rem;
+        }
+
+        /* =========================================================
+           TRES COMPONENTES FORENSE
+        ========================================================= */
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 17px;
+            margin-top: 22px;
+        }
+
+        .forensic-card {
+            padding: 20px;
+
+            border-radius: 16px;
+
+            background: white;
+            border: 1px solid #c7d2fe;
+
+            box-shadow: var(--shadow-sm);
+
+            text-align: left;
+        }
+
+        .forensic-card h3 {
+            margin: 0 0 12px;
+
+            color: var(--forensic);
+
+            font-size: 1rem;
+        }
+
+        .forensic-card ul {
+            list-style: none;
+
+            padding: 0;
+            margin: 0;
+
+            display: grid;
+            gap: 8px;
+        }
+
+        .forensic-card li {
+            position: relative;
+
+            padding-left: 19px;
+
+            color: var(--text);
+            font-size: .82rem;
+        }
+
+        .forensic-card li::before {
+            content: "✓";
+
+            position: absolute;
+            left: 0;
+            top: 0;
+
+            color: var(--forensic);
+            font-weight: 900;
+        }
+
+        /* =========================================================
+           CADENA DE CUSTODIA DESTACADA
+        ========================================================= */
+
+        .custody-flow {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            margin-top: 18px;
+        }
+
+        .custody-step {
+            min-width: 135px;
+
+            padding: 12px 14px;
+
+            background: #f8f7ff;
+            border: 1px solid #c7d2fe;
+
+            font-size: .77rem;
+            font-weight: 800;
+            color: #3730a3;
+
+            text-align: center;
+        }
+
+        .custody-step:first-child {
+            border-radius: 10px 0 0 10px;
+        }
+
+        .custody-step:last-child {
+            border-radius: 0 10px 10px 0;
+        }
+
+        .custody-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 28px;
+
+            color: #6366f1;
+            font-weight: 900;
+        }
+
+        /* =========================================================
+           CICLO DE RESPUESTA
+        ========================================================= */
+
+        .response-section {
+            margin-top: 24px;
+        }
+
+        .response-title {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .response-title h3 {
+            margin: 0;
+            color: var(--forensic);
+            font-size: 1.08rem;
+        }
+
+        .response-title p {
+            margin: 4px 0 0;
+            color: var(--muted);
+            font-size: .8rem;
+        }
+
+        .response-flow {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 8px;
+        }
+
+        .response-step {
+            min-height: 90px;
+
+            padding: 13px 10px;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #eef2ff,
+                    #ffffff
+                );
+
+            border: 1px solid #c7d2fe;
+
+            text-align: center;
+        }
+
+        .response-number {
+            width: 27px;
+            height: 27px;
+
+            margin: 0 auto 8px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: var(--forensic);
+            color: white;
+
+            font-size: .75rem;
+            font-weight: 900;
+        }
+
+        .response-step strong {
+            display: block;
+
+            color: #312e81;
+
+            font-size: .78rem;
+        }
+
+        .response-step span {
+            display: block;
+
+            margin-top: 4px;
+
+            color: var(--muted);
+            font-size: .7rem;
+        }
+
+        /* =========================================================
+           CIERRE
+        ========================================================= */
+
+        .learning {
+            margin-top: 23px;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+
+            padding: 14px;
+
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #14532d,
+                    #166534
+                );
+
+            color: white;
+        }
+
+        .learning-step {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            min-height: 54px;
+            padding: 8px 12px;
+
+            border-radius: 10px;
+
+            background: rgba(255,255,255,.09);
+
+            font-size: .82rem;
+            font-weight: 800;
+
+            text-align: center;
+        }
+
+        .learning-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: rgba(255,255,255,.7);
+
+            font-weight: 900;
+            font-size: 1.1rem;
+        }
+
+        /* =========================================================
+           REFERENCIAS
+        ========================================================= */
+
+        .sources {
+            margin-top: 22px;
+
+            padding: 18px 20px;
+
+            border-radius: 14px;
+
+            background: white;
+            border: 1px solid var(--border);
+
+            box-shadow: var(--shadow-sm);
+        }
+
+        .sources h3 {
+            margin: 0 0 9px;
+
+            color: var(--primary);
+
+            font-size: .9rem;
+        }
+
+        .sources p {
+            margin: 4px 0;
+
+            color: var(--muted);
+
+            font-size: .74rem;
+        }
+
+        /* =========================================================
+           MINI LEYENDA
+        ========================================================= */
+
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+
+            margin-top: 19px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            font-size: .72rem;
+            color: var(--muted);
+        }
+
+        .legend-color {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+        }
+
+        .legend-law1273 {
+            background: var(--law1273);
+        }
+
+        .legend-law1581 {
+            background: var(--law1581);
+        }
+
+        .legend-forensic {
+            background: var(--forensic);
+        }
+
+        .legend-success {
+            background: var(--success);
+        }
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 1050px) {
+
+            .response-flow {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .three-column {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 800px) {
+
+            body {
+                padding: 20px 12px 35px;
+            }
+
+            .hero {
+                padding: 28px 22px;
+            }
+
+            .laws-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .response-flow {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .article-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .learning {
+                grid-template-columns: 1fr;
+            }
+
+            .learning-arrow {
+                transform: rotate(90deg);
+            }
+        }
+
+        @media (max-width: 520px) {
+
+            .response-flow {
+                grid-template-columns: 1fr;
+            }
+
+            .custody-flow {
+                flex-direction: column;
+            }
+
+            .custody-step,
+            .custody-step:first-child,
+            .custody-step:last-child {
+                width: 100%;
+                border-radius: 8px;
+            }
+
+            .custody-arrow {
+                width: 100%;
+                height: 22px;
+                transform: rotate(90deg);
+            }
+        }
+
+        /* =========================================================
+           IMPRESIÓN / PDF
+        ========================================================= */
+
+        @media print {
+
+            body {
+                padding: 0;
+                background: white;
+            }
+
+            .container {
+                width: 100%;
+                max-width: none;
+            }
+
+            .hero,
+            .law-card,
+            .integration,
+            .forensic-card,
+            .sources {
+                box-shadow: none;
+            }
+
+            .hero {
+                break-inside: avoid;
+            }
+
+            .law-card,
+            .integration,
+            .forensic-card {
+                break-inside: avoid;
+            }
+
+            .connector {
+                margin-top: 14px;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <!-- =========================================================
+         CONCEPTO CENTRAL
+    ========================================================== -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-kicker">
+                Mapa conceptual · Contexto colombiano
+            </div>
+
+            <h1>
+                Seguridad de la Información y Protección de Datos en Colombia
+            </h1>
+
+            <p>
+                Marco legal, delitos informáticos, protección de datos,
+                gestión de incidentes e informática forense.
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+         CONECTOR
+    ========================================================== -->
+
+    <div class="connector">
+        <span class="connector-label">
+            Se regulan y protegen mediante
+        </span>
+    </div>
+
+    <div class="arrow-down">↓</div>
+
+
+    <!-- =========================================================
+         LEYES
+    ========================================================== -->
+
+    <section class="laws-grid">
+
+
+        <!-- =====================================================
+             LEY 1273
+        ====================================================== -->
+
+        <article class="law-card law-1273">
+
+            <div class="law-card-header">
+
+                <span class="law-number">
+                    Marco penal
+                </span>
+
+                <h2>
+                    Ley 1273 de 2009
+                </h2>
+
+                <p>
+                    Protección de la información y de los datos.
+                    Incorpora delitos informáticos al Código Penal.
+                </p>
+
+            </div>
+
+
+            <div class="law-content">
+
+
+                <!-- BIEN JURÍDICO -->
+
+                <div class="concept-block">
+
+                    <div class="concept-title">
+
+                        <div class="icon">01</div>
+
+                        <span>
+                            Bien jurídico tutelado
+                        </span>
+
+                    </div>
+
+                    <div class="concept-list">
+
+                        <div class="concept-item">
+                            <span>
+                                <strong>Confidencialidad:</strong>
+                                acceso únicamente autorizado.
+                            </span>
+                        </div>
+
+                        <div class="concept-item">
+                            <span>
+                                <strong>Integridad:</strong>
+                                información protegida contra alteraciones no autorizadas.
+                            </span>
+                        </div>
+
+                        <div class="concept-item">
+                            <span>
+                                <strong>Disponibilidad:</strong>
+                                acceso oportuno a sistemas e información.
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DELITOS -->
+
+                <div class="concept-block">
+
+                    <div class="concept-title">
+
+                        <div class="icon">02</div>
+
+                        <span>
+                            Delitos informáticos
+                        </span>
+
+                    </div>
+
+
+                    <div class="article-grid">
+
+                        <div class="article">
+                            <strong>269A</strong><br>
+                            Acceso abusivo a un sistema informático.
+                        </div>
+
+                        <div class="article">
+                            <strong>269B</strong><br>
+                            Obstaculización ilegítima de sistema o red.
+                        </div>
+
+                        <div class="article">
+                            <strong>269C</strong><br>
+                            Interceptación de datos informáticos.
+                        </div>
+
+                        <div class="article">
+                            <strong>269D</strong><br>
+                            Daño informático.
+                        </div>
+
+                        <div class="article">
+                            <strong>269E</strong><br>
+                            Uso de software malicioso.
+                        </div>
+
+                        <div class="article">
+                            <strong>269F</strong><br>
+                            Violación de datos personales.
+                        </div>
+
+                        <div class="article">
+                            <strong>269G</strong><br>
+                            Suplantación de sitios web para capturar datos.
+                        </div>
+
+                        <div class="article">
+                            <strong>269H</strong><br>
+                            Circunstancias de agravación punitiva.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- =====================================================
+             LEY 1581
+        ====================================================== -->
+
+        <article class="law-card law-1581">
+
+            <div class="law-card-header">
+
+                <span class="law-number">
+                    Marco de protección de datos
+                </span>
+
+                <h2>
+                    Ley Estatutaria 1581 de 2012
+                </h2>
+
+                <p>
+                    Regula el tratamiento de datos personales
+                    y desarrolla el derecho al hábeas data.
+                </p>
+
+            </div>
+
+
+            <div class="law-content">
+
+
+                <!-- PRINCIPIOS -->
+
+                <div class="concept-block">
+
+                    <div class="concept-title">
+
+                        <div class="icon">01</div>
+
+                        <span>
+                            Principios del tratamiento
+                        </span>
+
+                    </div>
+
+                    <div class="pill-grid">
+
+                        <span class="pill">Legalidad</span>
+                        <span class="pill">Finalidad</span>
+                        <span class="pill">Libertad</span>
+                        <span class="pill">Veracidad / Calidad</span>
+                        <span class="pill">Transparencia</span>
+                        <span class="pill">Acceso restringido</span>
+                        <span class="pill">Seguridad</span>
+                        <span class="pill">Confidencialidad</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DERECHOS -->
+
+                <div class="concept-block">
+
+                    <div class="concept-title">
+
+                        <div class="icon">02</div>
+
+                        <span>
+                            Derechos del titular
+                        </span>
+
+                    </div>
+
+                    <div class="concept-list">
+
+                        <div class="concept-item">
+                            <span>
+                                <strong>Conocer, actualizar y rectificar</strong>
+                                sus datos personales.
+                            </span>
+                        </div>
+
+                        <div class="concept-item">
+                            <span>
+                                Solicitar prueba de la
+                                <strong>autorización</strong> otorgada.
+                            </span>
+                        </div>
+
+                        <div class="concept-item">
+                            <span>
+                                Conocer el uso y tratamiento realizado
+                                sobre sus datos.
+                            </span>
+                        </div>
+
+                        <div class="concept-item">
+                            <span>
+                                Presentar
+                                <strong>quejas ante la SIC</strong>
+                                cuando corresponda.
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACTORES -->
+
+                <div class="concept-block">
+
+                    <div class="concept-title">
+
+                        <div class="icon">03</div>
+
+                        <span>
+                            Actores y categorías
+                        </span>
+
+                    </div>
+
+                    <div class="concept-list">
+
+                        <div class="concept-item">
+                            <span>
+                                <strong>Titular:</strong>
+                                persona natural a quien pertenecen los datos.
+                            </span>
+                        </div>
+
+                        <div class="concept-item">
+                            <span>
+                                <strong>Responsable:</strong>
+                                decide sobre el tratamiento.
+                            </span>
+                        </div>
+
+                        <div class="concept-item">
+                            <span>
+                                <strong>Encargado:</strong>
+                                realiza el tratamiento por cuenta del responsable.
+                            </span>
+                        </div>
+
+                        <div class="concept-item">
+                            <span>
+                                <strong>Datos sensibles:</strong>
+                                requieren protección y tratamiento especial.
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- =========================================================
+         RELACIÓN
+    ========================================================== -->
+
+    <div class="connector">
+
+        <span class="connector-label">
+            Se articulan operativamente frente a
+        </span>
+
+    </div>
+
+    <div class="arrow-down">↓</div>
+
+
+    <!-- =========================================================
+         INTEGRACIÓN
+    ========================================================== -->
+
+    <section class="integration">
+
+        <span class="integration-tag">
+            Conexión técnica y jurídica
+        </span>
+
+        <h2>
+            Gestión de Incidentes e Informática Forense
+        </h2>
+
+        <p>
+            Las normas establecen el marco de protección y responsabilidad;
+            la gestión de incidentes permite responder y la informática
+            forense permite preservar y analizar la evidencia digital.
+        </p>
+
+
+        <!-- =====================================================
+             FORENSE
+        ====================================================== -->
+
+        <div class="three-column">
+
+
+            <!-- ANÁLISIS FORENSE -->
+
+            <article class="forensic-card">
+
+                <h3>
+                    🔎 Análisis forense
+                </h3>
+
+                <ul>
+
+                    <li>Identificación</li>
+
+                    <li>Preservación</li>
+
+                    <li>Recolección y extracción</li>
+
+                    <li>Análisis de evidencia digital</li>
+
+                    <li>Documentación</li>
+
+                    <li>Presentación de resultados</li>
+
+                </ul>
+
+            </article>
+
+
+            <!-- CADENA DE CUSTODIA -->
+
+            <article class="forensic-card">
+
+                <h3>
+                    🔐 Cadena de custodia
+                </h3>
+
+                <ul>
+
+                    <li>Preservación de evidencia</li>
+
+                    <li>Integridad</li>
+
+                    <li>Autenticidad</li>
+
+                    <li>Trazabilidad</li>
+
+                    <li>Documentación del manejo</li>
+
+                    <li>Control de alteraciones</li>
+
+                </ul>
+
+            </article>
+
+
+            <!-- RESPUESTA -->
+
+            <article class="forensic-card">
+
+                <h3>
+                    🛡️ Respuesta a incidentes
+                </h3>
+
+                <ul>
+
+                    <li>Identificación y triaje</li>
+
+                    <li>Contención</li>
+
+                    <li>Análisis y causa raíz</li>
+
+                    <li>Erradicación</li>
+
+                    <li>Recuperación</li>
+
+                    <li>Lecciones aprendidas</li>
+
+                </ul>
+
+            </article>
+
+        </div>
+
+
+        <!-- =====================================================
+             CADENA DE CUSTODIA
+        ====================================================== -->
+
+        <div class="response-section">
+
+            <div class="response-title">
+
+                <h3>
+                    Flujo de preservación de evidencia
+                </h3>
+
+                <p>
+                    Principio de trazabilidad durante el proceso forense.
+                </p>
+
+            </div>
+
+            <div class="custody-flow">
+
+                <div class="custody-step">
+                    Hallazgo
+                </div>
+
+                <div class="custody-arrow">→</div>
+
+                <div class="custody-step">
+                    Identificación
+                </div>
+
+                <div class="custody-arrow">→</div>
+
+                <div class="custody-step">
+                    Recolección
+                </div>
+
+                <div class="custody-arrow">→</div>
+
+                <div class="custody-step">
+                    Conservación
+                </div>
+
+                <div class="custody-arrow">→</div>
+
+                <div class="custody-step">
+                    Análisis
+                </div>
+
+                <div class="custody-arrow">→</div>
+
+                <div class="custody-step">
+                    Documentación
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             CICLO DE RESPUESTA
+        ====================================================== -->
+
+        <div class="response-section">
+
+            <div class="response-title">
+
+                <h3>
+                    Ciclo de respuesta a incidentes
+                </h3>
+
+                <p>
+                    Respuesta estructurada orientada a contener,
+                    recuperar y aprender del incidente.
+                </p>
+
+            </div>
+
+
+            <div class="response-flow">
+
+                <div class="response-step">
+
+                    <div class="response-number">1</div>
+
+                    <strong>Identificación</strong>
+
+                    <span>
+                        Detectar el evento
+                    </span>
+
+                </div>
+
+
+                <div class="response-step">
+
+                    <div class="response-number">2</div>
+
+                    <strong>Triaje</strong>
+
+                    <span>
+                        Determinar criticidad
+                    </span>
+
+                </div>
+
+
+                <div class="response-step">
+
+                    <div class="response-number">3</div>
+
+                    <strong>Contención</strong>
+
+                    <span>
+                        Limitar impacto
+                    </span>
+
+                </div>
+
+
+                <div class="response-step">
+
+                    <div class="response-number">4</div>
+
+                    <strong>Análisis</strong>
+
+                    <span>
+                        Determinar causa y alcance
+                    </span>
+
+                </div>
+
+
+                <div class="response-step">
+
+                    <div class="response-number">5</div>
+
+                    <strong>Erradicación y recuperación</strong>
+
+                    <span>
+                        Restaurar operación
+                    </span>
+
+                </div>
+
+
+                <div class="response-step">
+
+                    <div class="response-number">6</div>
+
+                    <strong>Lecciones aprendidas</strong>
+
+                    <span>
+                        Mejorar controles
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             MEJORA CONTINUA
+        ====================================================== -->
+
+        <div class="learning">
+
+            <div class="learning-step">
+                Aprendizaje organizacional
+            </div>
+
+            <div class="learning-arrow">
+                →
+            </div>
+
+            <div class="learning-step">
+                Mejora continua de controles
+            </div>
+
+            <div class="learning-arrow">
+                →
+            </div>
+
+            <div class="learning-step">
+                Prevenir la repetición del incidente
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         LEYENDA
+    ========================================================== -->
+
+    <div class="legend">
+
+        <div class="legend-item">
+            <span class="legend-color legend-law1273"></span>
+            Ley 1273 de 2009
+        </div>
+
+        <div class="legend-item">
+            <span class="legend-color legend-law1581"></span>
+            Ley 1581 de 2012
+        </div>
+
+        <div class="legend-item">
+            <span class="legend-color legend-forensic"></span>
+            Informática forense
+        </div>
+
+        <div class="legend-item">
+            <span class="legend-color legend-success"></span>
+            Mejora continua
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+         REFERENCIAS
+    ========================================================== -->
+
+    <section class="sources">
+
+        <h3>
+            Referencias principales
+        </h3>
+
+        <p>
+            Congreso de Colombia. (2009). Ley 1273 de 2009.
+        </p>
+
+        <p>
+            Congreso de Colombia. (2012). Ley 1581 de 2012.
+        </p>
+
+        <p>
+            Cano Martínez, J. J. (Coord.). (2010).
+            <em>El peritaje informático y la evidencia digital en Colombia:
+            conceptos, retos y propuestas.</em>
+        </p>
+
+        <p>
+            Kent, K., Chevalier, S., Grance, T., &amp; Dang, H. (2006).
+            <em>Guide to Integrating Forensic Techniques into Incident Response.</em>
+            NIST SP 800-86.
+        </p>
+
+        <p>
+            Nelson, A., Rekhi, S., Scarfone, K., &amp; Souppaya, M. (2025).
+            <em>Incident Response Recommendations and Considerations for
+            Cybersecurity Risk Management.</em>
+            NIST SP 800-61 Rev. 3.
+        </p>
+
+    </section>
+
+
+</div>
+
+</body>
+</html>
